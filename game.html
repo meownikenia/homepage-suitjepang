@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Rock Paper Scissor Game</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+		user-select: none;
+      }
+h1 {text-align: center;
+}
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+		}
+      }
+	  body {
+		background-color: rgb(160, 86, 33);
+  		padding-top: 0rem;
+}
+	  img{width:100px;height:100px;}
+	  .img1{width:50px;height:50px;}
+	  table th,td{text-align:center;}
+    </style>
+    <!-- Custom styles for this template -->
+  </head>
+   <body class="text-center">
+   <main role="main" class="container">
+	  <div class="starter-template">
+		<h1>Rock Papper Scissor</h1>
+		<br>
+		<center>
+		<table width="100%">
+		<thead>
+			<tr>
+				<th>Player 1</th>
+				<th></th>
+				<th>Computer</th>	
+			</tr>
+		</thead>
+		
+		<tbody>
+		
+			<tr><td><br></td></tr>
+			<tr>
+				<td><img id="Batu" value="batu" onClick="ambil_nilai(this.id)" src="assets/batu.png"></td>
+				<td></td>
+				<td><img value="batu_lawan" src="assets/batu.png"></td>
+				
+			</tr>
+			<tr>
+				<td><img id="Gunting" onClick="ambil_nilai(this.id)" src="assets/gunting.png"></td>
+				<td><img id="hasil_gambar"></td>
+				<td><img src="assets/gunting.png"></td>
+			</tr>
+			<tr>
+				<td><img id="Kertas" onClick="ambil_nilai(this.id)" src="assets/kertas.png"></td>
+				<td></td>
+				<td><img src="assets/kertas.png"></td>
+			</tr>
+			<tr><td><br></td></tr>
+			<tr>
+				<td></td>
+				<td><img id="refresh" class="img1" onClick="refresh(this.id)" src="assets/refresh.png"></td>
+				<td></td>
+			</tr>
+		</tbody>
+		</table>
+		</center>
+	  </div>
+  </main>
+  <script>
+  document.getElementById("hasil_gambar").src = "assets/VS.png";
+	function ambil_nilai(clicked_id)
+	{
+				
+		var pilihan_bot = Array(1,2,3);
+		
+		var random = pilihan_bot[Math.floor(Math.random() * pilihan_bot.length)];
+		
+		if(random===1)
+		{
+			var descp = "Batu";
+		}
+		else if(random===2)
+		{
+			var descp = "Gunting";
+		}
+		else
+		{
+			var descp = "Kertas";
+		}
+		
+		if(clicked_id==='Batu' && descp==='Batu')
+		{
+			var hasil="Seri";
+		}
+		else if (clicked_id==='Batu' && descp==='Gunting')
+		{
+			var hasil="Menang";
+		}
+		else if (clicked_id==='Batu' && descp==='Kertas')
+		{
+			var hasil="Kalah";
+		}
+		else if (clicked_id==='Gunting' && descp==='Batu')
+		{
+			var hasil="Kalah";
+		}
+		else if (clicked_id==='Gunting' && descp==='Gunting')
+		{
+			var hasil="Seri";
+		}
+		else if (clicked_id==='Gunting' && descp==='Kertas')
+		{
+			var hasil="Menang";
+		}
+		else if (clicked_id==='Kertas' && descp==='Batu')
+		{
+			var hasil="Menang";
+		}
+		else if (clicked_id==='Kertas' && descp==='Gunting')
+		{
+			var hasil="Kalah";
+		}
+		else if (clicked_id==='Kertas' && descp==='Kertas')
+		{
+			var hasil="Seri";
+		}
+		
+		
+		alert(clicked_id+' VS '+descp+'\r\nAnda '+hasil);
+		
+		
+		if(hasil==='Kalah')
+		{
+			document.getElementById("hasil_gambar").src = "assets/kalah.png";
+		}
+		else if(hasil==='Menang')
+		{
+			document.getElementById("hasil_gambar").src = "assets/menang.png";
+		}
+		else if(hasil==='Seri')
+		{
+			document.getElementById("hasil_gambar").src = "assets/seri.png";
+		}
+	}
+	
+	function refresh(clicked_id)
+	{
+		document.getElementById("hasil_gambar").src = "assets/VS.png";
+	}
+  </script>
+</body>
+</html>
